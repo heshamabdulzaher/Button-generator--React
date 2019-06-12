@@ -13,7 +13,10 @@ export default class Result extends Component {
   render() {
     return (
       <ResultStyle>
-        <Preview button={this.props.button} />
+        <Preview
+          buttonText={this.props.buttonText}
+          fontFamily={this.props.fontFamily}
+        />
         <OuterCode />
       </ResultStyle>
     );

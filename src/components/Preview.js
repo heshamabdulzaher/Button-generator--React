@@ -31,12 +31,15 @@ const PreviewStyle = styled.section`
 
 export default class Preview extends Component {
   render() {
+    const dynamicStyles = {
+      fontFamily: this.props.fontFamily
+    };
     return (
       <PreviewStyle>
-        <button>
-          {this.props.button.text === ""
+        <button style={dynamicStyles}>
+          {this.props.buttonText === ""
             ? "Default text"
-            : this.props.button.text}
+            : this.props.buttonText}
         </button>
       </PreviewStyle>
     );

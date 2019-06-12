@@ -4,20 +4,22 @@ import Controlls from "./components/Controlls";
 import Result from "./components/Result";
 
 export default class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      button: { text: "Default text" }
-    };
-  }
+  state = {
+    buttonText: "Default text",
+    fontFamily: "Arial"
+  };
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     button: {
+  //       text: "Default text",
+  //       fontFamily: "Arial"
+  //     }
+  //   };
+  // }
 
-  changeButtonInfo = (key, newValue) => {
-    this.setState({
-      button: {
-        [key]: newValue
-      }
-    });
-    console.log(this.state.button[key]);
+  changeButtonInfo = async (key, newValue) => {
+    await this.setState({ [key]: newValue });
   };
 
   render() {
@@ -27,7 +29,10 @@ export default class App extends Component {
           button={this.state.button}
           changeButtonInfo={this.changeButtonInfo}
         />
-        <Result button={this.state.button} />
+        <Result
+          buttonText={this.state.buttonText}
+          fontFamily={this.state.fontFamily}
+        />
       </div>
     );
   }
