@@ -8,7 +8,7 @@ export const TextControlsStyle = styled.section`
       grid-template-rows: 40px 40px;
       grid-row-gap: 20px;
       .button_text {
-        padding: 0 100px 0 12px;
+        padding: 0 130px 0 12px;
       }
     }
     .row {
@@ -93,6 +93,34 @@ export const TextControlsStyle = styled.section`
 `;
 
 export default class Text extends Component {
+  state = {
+    fontSizeValue: 18
+  };
+  handleChangeEvent = e => {
+    // console.log(e.target.checked);
+
+    let key = e.target.getAttribute("data-key");
+    let newValue = e.target.value;
+    if (key === "fontSize") {
+      newValue = this.state.fontSizeValue;
+      this.setState({ fontSizeValue: newValue });
+    }
+    if (key === "bold" || key === "italic") {
+      newValue = e.target.checked;
+    }
+    this.props.changeButtonInfo(key, newValue);
+  };
+
+  updateFontSizeValue = e => {
+    let newFontSizeValue = this.state.fontSizeValue;
+    if (e.key === "ArrowUp" && newFontSizeValue < 50) {
+      newFontSizeValue++;
+    } else if (e.key === "ArrowDown" && newFontSizeValue > 14) {
+      newFontSizeValue--;
+    }
+    this.setState({ fontSizeValue: newFontSizeValue });
+  };
+
   render() {
     return (
       <TextControlsStyle className="controls_group">
@@ -104,11 +132,18 @@ export default class Text extends Component {
                 type="text"
                 className="button_text"
                 placeholder="Default text"
+                data-key="buttonText"
+                onChange={this.handleChangeEvent}
               />
-              <select className="default_value clickable">
+              <select
+                className="default_value clickable"
+                data-key="fontFamily"
+                onChange={this.handleChangeEvent}
+              >
                 <option>Arial</option>
-                <option>Arial 2</option>
-                <option>Arial 3</option>
+                <option>fantasy</option>
+                <option>cursive</option>
+                <option>monospace</option>
               </select>
               <svg width="12.118" height="6.039" viewBox="0 0 12.118 6.039">
                 <path
@@ -121,31 +156,70 @@ export default class Text extends Component {
           </div>
           <div className="row grid">
             <div className="control_item font_size">
-              <input type="number" value="18" min="14" max="70" />
+              <input
+                type="number"
+                value={this.state.fontSizeValue}
+                data-key="fontSize"
+                onKeyDown={this.updateFontSizeValue}
+                onChange={this.handleChangeEvent}
+              />
               <div className="default_value">px</div>
             </div>
             <div className="control_item bold">
-              <input type="checkbox" id="bold" />
+              <input
+                type="checkbox"
+                id="bold"
+                data-key="bold"
+                onChange={this.handleChangeEvent}
+              />
               <label htmlFor="bold" className="clickable">
                 <b>B</b>
               </label>
             </div>
             <div className="control_item italic">
-              <input type="checkbox" id="italic" />
+              <input
+                type="checkbox"
+                id="italic"
+                data-key="italic"
+                onChange={this.handleChangeEvent}
+              />
               <label htmlFor="italic" className="clickable">
                 <em>I</em>
               </label>
             </div>
             <div className="control_item text_transform">
-              <input type="radio" name="text_transform" id="uppercase" />
+              <input
+                type="radio"
+                name="text_transform"
+                id="uppercase"
+                value="uppercase"
+                data-key="textTransform"
+                onChange={this.handleChangeEvent}
+              />
               <label htmlFor="uppercase" className="clickable">
                 TT
               </label>
-              <input type="radio" name="text_transform" id="capitalize" />
+              {/*  */}
+              <input
+                type="radio"
+                name="text_transform"
+                id="capitalize"
+                value="capitalize"
+                data-key="textTransform"
+                onChange={this.handleChangeEvent}
+              />
               <label htmlFor="capitalize" className="clickable">
                 Tt
               </label>
-              <input type="radio" name="text_transform" id="lowercase" />
+              {/*  */}
+              <input
+                type="radio"
+                name="text_transform"
+                id="lowercase"
+                value="lowercase"
+                data-key="textTransform"
+                onChange={this.handleChangeEvent}
+              />
               <label htmlFor="lowercase" className="clickable">
                 tt
               </label>
