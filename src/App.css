@@ -1,16 +1,61 @@
 :root {
-  --PColor: #609;
-  --SColor: #ffc600;
+  --mainColor: #4467ad;
+  --darkBG: #21252b;
+  --lightBG: #333842;
 }
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
   border: 0;
+  outline: 0;
+  font-family: Montserrat, "roboto", arial;
 }
 body {
-  background-color: #eee;
+  background-color: #f2f3f8;
 }
 .app {
+  display: grid;
+  grid-template-columns: 400px auto 246px;
+}
+
+/* shared styles */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button,
+select {
+  -webkit-appearance: none;
+}
+input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+input {
+  background-color: transparent;
+  color: #fff;
+  font-weight: 400;
+  font-size: 15px;
+}
+input[type="checkbox"],
+input[type="color"],
+input[type="radio"] {
+  display: none;
+}
+.clickable {
+  cursor: pointer;
+}
+.default_value {
+  position: absolute;
+  top: 3px;
+  right: 5px;
+  padding: 0 10px;
+  background-color: var(--darkBG);
+  height: calc(100% - 6px);
+  border-radius: 3px;
+  color: rgba(255, 255, 255, 0.4);
   display: flex;
+  align-items: center;
+}
+
+.control_item input:checked + label {
+  color: #fff;
+  font-weight: 500;
 }
