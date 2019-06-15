@@ -29,6 +29,7 @@ const ResultStyle = styled.section`
     margin-bottom: 30px;
   }
   section {
+    max-width: 650px;
     min-height: 300px;
     margin: 0 auto;
     border-radius: 5px;

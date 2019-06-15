@@ -6,6 +6,10 @@ import Presets from "./components/presets/Presets";
 
 export default class App extends Component {
   state = {
+    // person: {
+    //   name: "hesham",
+    //   age: 23
+    // },
     buttonText: "Default text",
     fontFamily: "Arial",
     fontSize: 18,
@@ -29,6 +33,11 @@ export default class App extends Component {
   updateMyButton = async (key, newValue) => {
     await this.setState({ [key]: newValue });
   };
+  // test = async (key, newValue) => {
+  //   let updatedPerson = { ...this.state.person };
+  //   updatedPerson[key] = newValue;
+  //   await this.setState({ person: updatedPerson });
+  // };
 
   render() {
     return (

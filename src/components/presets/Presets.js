@@ -9,7 +9,7 @@ export default class Presets extends Component {
     render() {
         return (
             <PresetsStyle>
-                Presets
+                <h2>Presets</h2>
             </PresetsStyle>
         )
     }

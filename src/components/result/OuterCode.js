@@ -40,6 +40,44 @@ export default class OuterCode extends Component {
           <div className="line_of_code">
             &nbsp; font-size: <span>{this.props.fontSize}px</span>;
           </div>
+          {/* font-weight */}
+          <div className="line_of_code">
+            &nbsp; font-weight: <span>{this.props.bold ? "bold" : 500}</span>;
+          </div>
+          {/* font-style */}
+          {this.props.italic && (
+            <div className="line_of_code">
+              &nbsp; font-style: <span>italic</span>;
+            </div>
+          )}
+          {/* text-transform */}
+          {this.props.textTransform && (
+            <div className="line_of_code">
+              &nbsp; text-transform: <span>{this.props.textTransform}</span>;
+            </div>
+          )}
+          {/* background-color */}
+          <div className="line_of_code">
+            &nbsp; background-color:
+            <span>
+              {` rgba(${this.props.backgroundColorRGBA.r}, ${
+                this.props.backgroundColorRGBA.g
+              }, ${this.props.backgroundColorRGBA.b}, ${
+                this.props.backgroundColorRGBA.a
+              })`}
+            </span>
+            ;
+          </div>
+          {/* color */}
+          <div className="line_of_code">
+            &nbsp; color:
+            <span>
+              {` rgba(${this.props.colorRGBA.r}, ${this.props.colorRGBA.g}, ${
+                this.props.colorRGBA.b
+              }, ${this.props.colorRGBA.a})`}
+            </span>
+            ;
+          </div>
           <div className="line_of_code">{"}"}</div>
         </div>
 
