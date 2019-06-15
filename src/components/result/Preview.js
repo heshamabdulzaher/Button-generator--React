@@ -40,8 +40,17 @@ export default class Preview extends Component {
       fontSize: this.props.fontSize,
       fontWeight: this.props.bold ? "bold" : 400,
       fontStyle: this.props.italic ? "Italic" : "normal",
-      textTransform:
-        this.props.textTransform === "" ? "none" : this.props.textTransform
+      textTransform: this.props.textTransform
+        ? this.props.textTransform
+        : "none",
+      backgroundColor: `rgba(${this.props.backgroundColorRGBA.r}, ${
+        this.props.backgroundColorRGBA.g
+      }, ${this.props.backgroundColorRGBA.b}, ${
+        this.props.backgroundColorRGBA.a
+      })`,
+      color: `rgba(${this.props.colorRGBA.r}, ${this.props.colorRGBA.g}, ${
+        this.props.colorRGBA.b
+      }, ${this.props.colorRGBA.a})`
     };
     return (
       <PreviewStyle>

@@ -96,9 +96,7 @@ export default class Text extends Component {
   state = {
     fontSizeValue: 18
   };
-  handleChangeEvent = e => {
-    // console.log(e.target.checked);
-
+  handleChange = e => {
     let key = e.target.getAttribute("data-key");
     let newValue = e.target.value;
     if (key === "fontSize") {
@@ -108,7 +106,7 @@ export default class Text extends Component {
     if (key === "bold" || key === "italic") {
       newValue = e.target.checked;
     }
-    this.props.changeButtonInfo(key, newValue);
+    this.props.updateMyButton(key, newValue);
   };
 
   updateFontSizeValue = e => {
@@ -133,12 +131,12 @@ export default class Text extends Component {
                 className="button_text"
                 placeholder="Default text"
                 data-key="buttonText"
-                onChange={this.handleChangeEvent}
+                onChange={this.handleChange}
               />
               <select
                 className="default_value clickable"
                 data-key="fontFamily"
-                onChange={this.handleChangeEvent}
+                onChange={this.handleChange}
               >
                 <option>Arial</option>
                 <option>fantasy</option>
@@ -161,7 +159,7 @@ export default class Text extends Component {
                 value={this.state.fontSizeValue}
                 data-key="fontSize"
                 onKeyDown={this.updateFontSizeValue}
-                onChange={this.handleChangeEvent}
+                onChange={this.handleChange}
               />
               <div className="default_value">px</div>
             </div>
@@ -170,7 +168,7 @@ export default class Text extends Component {
                 type="checkbox"
                 id="bold"
                 data-key="bold"
-                onChange={this.handleChangeEvent}
+                onChange={this.handleChange}
               />
               <label htmlFor="bold" className="clickable">
                 <b>B</b>
@@ -181,7 +179,7 @@ export default class Text extends Component {
                 type="checkbox"
                 id="italic"
                 data-key="italic"
-                onChange={this.handleChangeEvent}
+                onChange={this.handleChange}
               />
               <label htmlFor="italic" className="clickable">
                 <em>I</em>
@@ -194,31 +192,29 @@ export default class Text extends Component {
                 id="uppercase"
                 value="uppercase"
                 data-key="textTransform"
-                onChange={this.handleChangeEvent}
+                onChange={this.handleChange}
               />
               <label htmlFor="uppercase" className="clickable">
                 TT
               </label>
-              {/*  */}
               <input
                 type="radio"
                 name="text_transform"
                 id="capitalize"
                 value="capitalize"
                 data-key="textTransform"
-                onChange={this.handleChangeEvent}
+                onChange={this.handleChange}
               />
               <label htmlFor="capitalize" className="clickable">
                 Tt
               </label>
-              {/*  */}
               <input
                 type="radio"
                 name="text_transform"
                 id="lowercase"
                 value="lowercase"
                 data-key="textTransform"
-                onChange={this.handleChangeEvent}
+                onChange={this.handleChange}
               />
               <label htmlFor="lowercase" className="clickable">
                 tt

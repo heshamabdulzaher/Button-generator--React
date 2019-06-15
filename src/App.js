@@ -11,18 +11,33 @@ export default class App extends Component {
     fontSize: 18,
     bold: false,
     italic: false,
-    textTransform: ""
+    textTransform: "",
+    backgroundColorRGBA: {
+      r: "40",
+      g: "9",
+      b: "74",
+      a: "1"
+    },
+    colorRGBA: {
+      r: "255",
+      g: "255",
+      b: "255",
+      a: "1"
+    }
   };
 
-  changeButtonInfo = async (key, newValue) => {
+  updateMyButton = async (key, newValue) => {
     await this.setState({ [key]: newValue });
-    // console.log(newValue);
   };
 
   render() {
     return (
       <div className="app">
-        <Controls changeButtonInfo={this.changeButtonInfo} />
+        <Controls
+          updateMyButton={this.updateMyButton}
+          backgroundColorRGBA={this.state.backgroundColorRGBA}
+          colorRGBA={this.state.colorRGBA}
+        />
         <Result
           buttonText={this.state.buttonText}
           fontFamily={this.state.fontFamily}
@@ -30,6 +45,8 @@ export default class App extends Component {
           bold={this.state.bold}
           italic={this.state.italic}
           textTransform={this.state.textTransform}
+          backgroundColorRGBA={this.state.backgroundColorRGBA}
+          colorRGBA={this.state.colorRGBA}
         />
         <Presets />
       </div>

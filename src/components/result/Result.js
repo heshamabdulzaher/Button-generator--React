@@ -6,7 +6,7 @@ import styled from "styled-components";
 const ResultStyle = styled.div`
   background-color: #f2f3f8;
   padding: 20px 60px;
-  h1{
+  h1 {
     text-align: center;
     font-weight: 500;
     font-size: 30px;
@@ -27,6 +27,8 @@ export default class Result extends Component {
           bold={this.props.bold}
           italic={this.props.italic}
           textTransform={this.props.textTransform}
+          backgroundColorRGBA={this.props.backgroundColorRGBA}
+          colorRGBA={this.props.colorRGBA}
         />
         <OuterCode />
       </ResultStyle>
