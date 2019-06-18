@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { ChromePicker } from "react-color";
-import ColorPicker from "./ColorPicker";
+import ColorsControlsListItem from "./ColorsControlsListItem";
 
 export const ColorsControlsStyle = styled.section`
   ul {
@@ -30,7 +29,7 @@ export const ColorsControlsStyle = styled.section`
   }
 `;
 
-export default class Colors extends Component {
+export default class ColorsControls extends Component {
   state = {
     displayColorPicker: false,
     rgb: {
@@ -45,22 +44,18 @@ export default class Colors extends Component {
       <ColorsControlsStyle className="controls_group">
         <h3>Colors</h3>
         <ul>
-          <li>
-            <span>background-color</span>
-            <ColorPicker
-              myKeyIs="backgroundColorRGBA"
-              myValueIs={this.props.backgroundColorRGBA}
-              updateMyButton={this.props.updateMyButton}
-            />
-          </li>
-          <li>
-            <span>text-color</span>
-            <ColorPicker
-              myKeyIs="colorRGBA"
-              myValueIs={this.props.colorRGBA}
-              updateMyButton={this.props.updateMyButton}
-            />
-          </li>
+          <ColorsControlsListItem
+            text="background-color"
+            myKeyIs="backgroundColorRGBA"
+            myValueIs={this.props.backgroundColorRGBA}
+            updateMyButton={this.props.updateMyButton}
+          />
+          <ColorsControlsListItem
+            text="color"
+            myKeyIs="colorRGBA"
+            myValueIs={this.props.colorRGBA}
+            updateMyButton={this.props.updateMyButton}
+          />
         </ul>
       </ColorsControlsStyle>
     );

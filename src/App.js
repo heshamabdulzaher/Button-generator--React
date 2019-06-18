@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
-import Controls from "./components/controls/Controls";
+import Controls from "./components/controls/ControlsContainer";
 import Result from "./components/result/Result";
 import Presets from "./components/presets/Presets";
 

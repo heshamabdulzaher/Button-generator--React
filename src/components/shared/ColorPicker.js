@@ -68,7 +68,7 @@ export default class ColorPicker extends Component {
     const activeColor = {
       backgroundColor: `rgba(${this.state.color.r}, ${this.state.color.g}, ${
         this.state.color.b
-      }, ${this.state.color.a})`
+        }, ${this.state.color.a})`
     };
     return (
       <ColorPickerStyles>
