@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { ControllsStyle } from "./ControlsStyles";
 import Text from "./Text";
 import Colors from "./Colors";
+import TextControls from "./text-controls/TextControls";
 
 export default class Controls extends Component {
   render() {
@@ -9,7 +10,8 @@ export default class Controls extends Component {
       <ControllsStyle>
         <h2>Controls</h2>
         <div className="all_controls_components">
-          <Text updateMyButton={this.props.updateMyButton} />
+          <TextControls updateMyButton={this.props.updateMyButton} />
+          {/* <Text updateMyButton={this.props.updateMyButton} /> */}
           <Colors
             updateMyButton={this.props.updateMyButton}
             backgroundColorRGBA={this.props.backgroundColorRGBA}
