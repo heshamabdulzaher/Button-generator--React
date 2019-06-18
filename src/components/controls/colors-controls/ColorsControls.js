@@ -43,7 +43,7 @@ export default class ColorsControls extends Component {
     return (
       <ColorsControlsStyle className="controls_group">
         <h3>Colors</h3>
-        <ul>
+        <ul className="controls_container">
           <ColorsControlsListItem
             text="background-color"
             myKeyIs="backgroundColorRGBA"

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import TextControls from "./text-controls/TextControls";
 import styled from "styled-components";
 import ColorsControls from './colors-controls/ColorsControls';
+import SizeControls from './size-controls/SizeControls';
 
 const ControllsStyle = styled.section`
   background-color: var(--darkBG);
@@ -26,7 +27,9 @@ const ControllsStyle = styled.section`
       text-transform: uppercase;
       font-style: italic;
       color: #aaa;
-      margin-bottom: 12px;
+    }
+    .controls_container{
+      margin-top: 12px;
     }
   }
 `;
@@ -42,6 +45,7 @@ export default class Controls extends Component {
             backgroundColorRGBA={this.props.backgroundColorRGBA}
             colorRGBA={this.props.colorRGBA}
           />
+          <SizeControls />
         </div>
       </ControllsStyle>
     );
