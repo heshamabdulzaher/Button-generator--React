@@ -57,13 +57,11 @@ export default class SizeControls extends Component {
   };
 
   updateHorizontalSizeValue = value => {
-    this.setState({ horizontalSizeValue: value })
     let key = "padding";
     let newValue = `${this.state.horizontalSizeValue}px ${this.state.verticalSizeValue}px`;
     this.props.updateMyButton(key, newValue)
   }
   updateVerticalSizeValue = value => {
-    this.setState({ verticalSizeValue: value })
     let key = "padding";
     let newValue = `${this.state.horizontalSizeValue}px ${this.state.verticalSizeValue}px`;
     this.props.updateMyButton(key, newValue)
@@ -82,7 +80,8 @@ export default class SizeControls extends Component {
               maxValue={25}
               minValue={5}
               value={this.state.horizontalSizeValue}
-              onChange={this.updateHorizontalSizeValue}
+              onChange={horizontalSizeValue => this.setState({ horizontalSizeValue })}
+              onChangeComplete={this.updateHorizontalSizeValue}
             />
           </li>
           <li>
@@ -94,7 +93,8 @@ export default class SizeControls extends Component {
               maxValue={50}
               minValue={10}
               value={this.state.verticalSizeValue}
-              onChange={this.updateVerticalSizeValue}
+              onChange={verticalSizeValue => this.setState({ verticalSizeValue })}
+              onChangeComplete={this.updateVerticalSizeValue}
             />
           </li>
         </ul>
@@ -102,3 +102,5 @@ export default class SizeControls extends Component {
     );
   }
 }
+
+
