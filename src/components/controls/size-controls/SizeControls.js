@@ -53,8 +53,21 @@ const SizeControlsStyles = styled.section`
 export default class SizeControls extends Component {
   state = {
     horizontalSizeValue: 10,
-    verticalSizeValue: 30
+    verticalSizeValue: 20
   };
+
+  updateHorizontalSizeValue = value => {
+    this.setState({ horizontalSizeValue: value })
+    let key = "padding";
+    let newValue = `${this.state.horizontalSizeValue}px ${this.state.verticalSizeValue}px`;
+    this.props.updateMyButton(key, newValue)
+  }
+  updateVerticalSizeValue = value => {
+    this.setState({ verticalSizeValue: value })
+    let key = "padding";
+    let newValue = `${this.state.horizontalSizeValue}px ${this.state.verticalSizeValue}px`;
+    this.props.updateMyButton(key, newValue)
+  }
   render() {
     return (
       <SizeControlsStyles className="controls_group">
@@ -66,12 +79,22 @@ export default class SizeControls extends Component {
               <span> {this.state.horizontalSizeValue}px</span>
             </div>
             <InputRange
-              maxValue={50}
-              minValue={0}
+              maxValue={25}
+              minValue={5}
               value={this.state.horizontalSizeValue}
-              onChange={horizontalSizeValue =>
-                this.setState({ horizontalSizeValue })
-              }
+              onChange={this.updateHorizontalSizeValue}
+            />
+          </li>
+          <li>
+            <div className="text">
+              Vertical size
+              <span> {this.state.verticalSizeValue}px</span>
+            </div>
+            <InputRange
+              maxValue={50}
+              minValue={10}
+              value={this.state.verticalSizeValue}
+              onChange={this.updateVerticalSizeValue}
             />
           </li>
         </ul>

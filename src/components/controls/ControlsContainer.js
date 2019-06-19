@@ -48,7 +48,7 @@ export default class ControlsContainer extends Component {
             color={this.props.button.color}
             updateMyButton={this.props.updateMyButton}
           />
-          <SizeControls />
+          <SizeControls updateMyButton={this.props.updateMyButton} />
         </div>
       </ControllsStyle>
     );

@@ -24,7 +24,8 @@ export default class App extends Component {
         g: "255",
         b: "255",
         a: "1"
-      }
+      },
+      padding: "10px 20px"
     }
   };
 
@@ -32,6 +33,7 @@ export default class App extends Component {
     let buttonUpdated = { ...this.state.button };
     buttonUpdated[key] = newValue;
     await this.setState({ button: buttonUpdated });
+    console.log(newValue);
   };
 
   render() {
