@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import SizeControlsListItem from "./SizeControlsListItem";
+import "react-input-range/lib/css/index.css";
+import InputRange from "react-input-range";
 
 const SizeControlsStyles = styled.section`
   ul {
@@ -50,13 +51,29 @@ const SizeControlsStyles = styled.section`
   }
 `;
 export default class SizeControls extends Component {
+  state = {
+    horizontalSizeValue: 10,
+    verticalSizeValue: 30
+  };
   render() {
     return (
       <SizeControlsStyles className="controls_group">
         <h3>size</h3>
-        <ul>
-          <SizeControlsListItem text="Horizontal size" value={10} />
-          <SizeControlsListItem text="Vertical size" value={30} />
+        <ul className="controls_container">
+          <li>
+            <div className="text">
+              Horizontal size
+              <span> {this.state.horizontalSizeValue}px</span>
+            </div>
+            <InputRange
+              maxValue={50}
+              minValue={0}
+              value={this.state.horizontalSizeValue}
+              onChange={horizontalSizeValue =>
+                this.setState({ horizontalSizeValue })
+              }
+            />
+          </li>
         </ul>
       </SizeControlsStyles>
     );

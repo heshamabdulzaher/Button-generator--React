@@ -11,6 +11,11 @@ export default class SizeControlsListItem extends Component {
     this.setState({ value: this.props.value });
   }
 
+  handleChange = newValue => {
+    this.setState({ value: newValue });
+    // this.props.updateMyButton(key, newValue);
+  };
+
   render() {
     return (
       <li>
@@ -23,7 +28,6 @@ export default class SizeControlsListItem extends Component {
           minValue={0}
           value={this.state.value}
           onChange={value => this.setState({ value })}
-          onChangeComplete={value => console.log(value)}
         />
       </li>
     );
