@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import "./App.css";
 import ControlsContainer from "./components/controls/ControlsContainer";
 import Result from "./components/result/Result";
-import Presets from "./components/presets/Presets";
 
 export default class App extends Component {
   state = {
@@ -33,7 +32,6 @@ export default class App extends Component {
     let buttonUpdated = { ...this.state.button };
     buttonUpdated[key] = newValue;
     await this.setState({ button: buttonUpdated });
-    console.log(newValue);
   };
 
   render() {

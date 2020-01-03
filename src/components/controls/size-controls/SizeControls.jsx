@@ -56,51 +56,61 @@ export default class SizeControls extends Component {
     verticalSizeValue: 20
   };
 
-  updateHorizontalSizeValue = value => {
+  updateHorizontalSizeValue = async value => {
+    await this.setState({
+      horizontalSizeValue: value
+    });
     let key = "padding";
     let newValue = `${this.state.horizontalSizeValue}px ${this.state.verticalSizeValue}px`;
-    this.props.updateMyButton(key, newValue)
-  }
-  updateVerticalSizeValue = value => {
+    this.props.updateMyButton(key, newValue);
+  };
+  updateVerticalSizeValue = async value => {
+    await this.setState({
+      verticalSizeValue: value
+    });
     let key = "padding";
     let newValue = `${this.state.horizontalSizeValue}px ${this.state.verticalSizeValue}px`;
-    this.props.updateMyButton(key, newValue)
-  }
+    this.props.updateMyButton(key, newValue);
+  };
   render() {
     return (
       <SizeControlsStyles className="controls_group">
-        <h3>size</h3>
+        <h3> size </h3>{" "}
         <ul className="controls_container">
           <li>
             <div className="text">
-              Horizontal size
-              <span> {this.state.horizontalSizeValue}px</span>
-            </div>
+              Horizontal size{" "}
+              <span>
+                {" "}
+                {this.state.horizontalSizeValue}
+                px{" "}
+              </span>{" "}
+            </div>{" "}
             <InputRange
               maxValue={25}
               minValue={5}
               value={this.state.horizontalSizeValue}
-              onChange={horizontalSizeValue => this.setState({ horizontalSizeValue })}
-              onChangeComplete={this.updateHorizontalSizeValue}
-            />
-          </li>
+              onChange={this.updateHorizontalSizeValue}
+            />{" "}
+          </li>{" "}
           <li>
             <div className="text">
-              Vertical size
-              <span> {this.state.verticalSizeValue}px</span>
-            </div>
+              Vertical size{" "}
+              <span>
+                {" "}
+                {this.state.verticalSizeValue}
+                px{" "}
+              </span>{" "}
+            </div>{" "}
             <InputRange
               maxValue={50}
               minValue={10}
               value={this.state.verticalSizeValue}
-              onChange={verticalSizeValue => this.setState({ verticalSizeValue })}
-              onChangeComplete={this.updateVerticalSizeValue}
-            />
-          </li>
-        </ul>
+              onChange={this.updateVerticalSizeValue}
+            />{" "}
+          </li>{" "}
+        </ul>{" "}
       </SizeControlsStyles>
     );
   }
 }
-
-

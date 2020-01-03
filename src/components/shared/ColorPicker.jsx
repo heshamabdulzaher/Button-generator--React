@@ -23,7 +23,7 @@ export const ColorPickerStyles = styled.div`
   }
 `;
 
-export default class ColorPicker extends Component {
+class ColorPicker extends Component {
   state = {
     displayColorPicker: false,
     color: {
@@ -54,9 +54,7 @@ export default class ColorPicker extends Component {
 
   render() {
     let activeColor = {
-      backgroundColor: `rgba(${this.state.color.r}, ${this.state.color.g}, ${
-        this.state.color.b
-      }, ${this.state.color.a})`
+      backgroundColor: `rgba(${this.state.color.r}, ${this.state.color.g}, ${this.state.color.b}, ${this.state.color.a})`
     };
     return (
       <ColorPickerStyles>
@@ -79,6 +77,4 @@ export default class ColorPicker extends Component {
   }
 }
 
-// What I need:
-// - Color as rgba DONE
-// - function to change the color
+export default ColorPicker;
