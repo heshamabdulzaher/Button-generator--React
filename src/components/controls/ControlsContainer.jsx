@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import TextControls from "./text-controls/TextControls";
 import styled from "styled-components";
-import ColorsControls from './colors-controls/ColorsControls';
-import SizeControls from './size-controls/SizeControls';
+import ColorsControls from "./colors-controls/ColorsControls";
+import SizeControls from "./size-controls/SizeControls";
 
 const ControllsStyle = styled.section`
   background-color: var(--darkBG);
@@ -28,12 +28,13 @@ const ControllsStyle = styled.section`
       font-style: italic;
       color: #aaa;
     }
-    .controls_container{
+    .controls_container {
       margin-top: 12px;
     }
   }
 `;
-export default class Controls extends Component {
+
+export default class ControlsContainer extends Component {
   render() {
     return (
       <ControllsStyle>
@@ -41,11 +42,13 @@ export default class Controls extends Component {
         <div className="all_controls_components">
           <TextControls updateMyButton={this.props.updateMyButton} />
           <ColorsControls
+            backgroundColor={
+              this.props.button.backgroundColor
+            }
+            color={this.props.button.color}
             updateMyButton={this.props.updateMyButton}
-            backgroundColorRGBA={this.props.backgroundColorRGBA}
-            colorRGBA={this.props.colorRGBA}
           />
-          <SizeControls />
+          <SizeControls updateMyButton={this.props.updateMyButton} />
         </div>
       </ControllsStyle>
     );

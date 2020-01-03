@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import ColorsControlsListItem from "./ColorsControlsListItem";
+import ColorPicker from "../../shared/ColorPicker";
 
 export const ColorsControlsStyle = styled.section`
   ul {
@@ -30,32 +30,27 @@ export const ColorsControlsStyle = styled.section`
 `;
 
 export default class ColorsControls extends Component {
-  state = {
-    displayColorPicker: false,
-    rgb: {
-      r: 51,
-      g: 51,
-      b: 51,
-      a: 1
-    }
-  };
   render() {
     return (
       <ColorsControlsStyle className="controls_group">
         <h3>Colors</h3>
         <ul className="controls_container">
-          <ColorsControlsListItem
-            text="background-color"
-            myKeyIs="backgroundColorRGBA"
-            myValueIs={this.props.backgroundColorRGBA}
-            updateMyButton={this.props.updateMyButton}
-          />
-          <ColorsControlsListItem
-            text="color"
-            myKeyIs="colorRGBA"
-            myValueIs={this.props.colorRGBA}
-            updateMyButton={this.props.updateMyButton}
-          />
+          <li>
+            <span>background-color</span>
+            <ColorPicker
+              renderColor={this.props.backgroundColor}
+              myKeyIs="backgroundColor"
+              updateMyButton={this.props.updateMyButton}
+            />
+          </li>
+          <li>
+            <span>text-color</span>
+            <ColorPicker
+              renderColor={this.props.color}
+              myKeyIs="color"
+              updateMyButton={this.props.updateMyButton}
+            />
+          </li>
         </ul>
       </ColorsControlsStyle>
     );

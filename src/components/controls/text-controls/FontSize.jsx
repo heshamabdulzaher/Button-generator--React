@@ -20,6 +20,7 @@ export default class FontSize extends Component {
         let key = e.target.getAttribute("data-key");
         let newValue = this.state.fontSizeValue;
         this.setState({ fontSizeValue: newValue });
+        newValue += "px";
         this.props.updateMyButton(key, newValue);
     };
 

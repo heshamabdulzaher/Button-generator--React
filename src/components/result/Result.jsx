@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Preview from "./Preview";
-import OuterCode from "./OuterCode";
+import Code from "./Code";
 import styled from "styled-components";
 
 const ResultStyle = styled.section`
@@ -58,29 +58,48 @@ const ResultStyle = styled.section`
 `;
 
 export default class Result extends Component {
+  // state = {
+  //   buttonCssProperties: {}
+  // }
+  // componentWillMount(){
+
+  // }
+  handleButtonCss = () => {
+    let buttonUpdated = { ...this.props.button };
+    let cssProperty;
+
+    for (let key in buttonUpdated) {
+      cssProperty = key;
+
+      // Delete buttonText item because it's a css property
+      if (
+        cssProperty === "buttonText" ||
+        buttonUpdated[key] === "none" ||
+        buttonUpdated[key] === "normal" ||
+        buttonUpdated[key] === 0
+      ) {
+        delete buttonUpdated[cssProperty];
+      }
+
+      // Update backgroundColor & color values
+      if (cssProperty === "backgroundColor" || cssProperty === "color") {
+        buttonUpdated[cssProperty] = `rgba(${buttonUpdated[cssProperty].r}, ${
+          buttonUpdated[cssProperty].g
+        }, ${buttonUpdated[cssProperty].b}, ${buttonUpdated[cssProperty].a})`;
+      }
+    }
+    return buttonUpdated;
+  };
+
   render() {
     return (
       <ResultStyle>
         <h1>Button Generator</h1>
         <Preview
-          buttonText={this.props.buttonText}
-          fontFamily={this.props.fontFamily}
-          fontSize={this.props.fontSize}
-          bold={this.props.bold}
-          italic={this.props.italic}
-          textTransform={this.props.textTransform}
-          backgroundColorRGBA={this.props.backgroundColorRGBA}
-          colorRGBA={this.props.colorRGBA}
+          handleButtonCss={this.handleButtonCss}
+          buttonText={this.props.button.buttonText}
         />
-        <OuterCode
-          fontFamily={this.props.fontFamily}
-          fontSize={this.props.fontSize}
-          bold={this.props.bold}
-          italic={this.props.italic}
-          textTransform={this.props.textTransform}
-          backgroundColorRGBA={this.props.backgroundColorRGBA}
-          colorRGBA={this.props.colorRGBA}
-        />
+        <Code handleButtonCss={this.handleButtonCss} />
       </ResultStyle>
     );
   }

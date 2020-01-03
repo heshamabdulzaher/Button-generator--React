@@ -23,24 +23,19 @@ export const ColorPickerStyles = styled.div`
   }
 `;
 
-export default class ColorPicker extends Component {
+class ColorPicker extends Component {
   state = {
     displayColorPicker: false,
     color: {
-      r: "0",
-      g: "0",
-      b: "0",
-      a: "1"
+      r: 0,
+      g: 0,
+      b: 0,
+      a: 1
     }
   };
 
   componentWillMount() {
-    let UpdatedcolorObject = { ...this.state.color };
-    UpdatedcolorObject.r = this.props.myValueIs.r;
-    UpdatedcolorObject.g = this.props.myValueIs.g;
-    UpdatedcolorObject.b = this.props.myValueIs.b;
-    UpdatedcolorObject.a = this.props.myValueIs.a;
-    this.setState({ color: UpdatedcolorObject });
+    this.setState({ color: this.props.renderColor });
   }
 
   showColorPicker = () => {
@@ -51,24 +46,15 @@ export default class ColorPicker extends Component {
     this.setState({ displayColorPicker: false });
   };
 
-  handleChange = color => {
-    // Update color object
-    let UpdatedcolorObject = { ...this.state.color };
-    UpdatedcolorObject.r = color.rgb.r;
-    UpdatedcolorObject.g = color.rgb.g;
-    UpdatedcolorObject.b = color.rgb.b;
-    UpdatedcolorObject.a = color.rgb.a;
-    this.setState({ color: UpdatedcolorObject });
+  handleChange = newColor => {
+    this.setState({ color: newColor.rgb });
     let key = this.props.myKeyIs;
-    let newValue = this.state.color;
-    this.props.updateMyButton(key, newValue);
+    this.props.updateMyButton(key, newColor.rgb);
   };
 
   render() {
-    const activeColor = {
-      backgroundColor: `rgba(${this.state.color.r}, ${this.state.color.g}, ${
-        this.state.color.b
-        }, ${this.state.color.a})`
+    let activeColor = {
+      backgroundColor: `rgba(${this.state.color.r}, ${this.state.color.g}, ${this.state.color.b}, ${this.state.color.a})`
     };
     return (
       <ColorPickerStyles>
@@ -90,3 +76,5 @@ export default class ColorPicker extends Component {
     );
   }
 }
+
+export default ColorPicker;
